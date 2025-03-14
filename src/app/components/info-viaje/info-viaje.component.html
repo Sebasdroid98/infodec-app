@@ -1,0 +1,39 @@
+<!-- <p>info-viaje works!</p> -->
+
+<!-- <p>ciudad info: {{ infoCiudad | json }}</p> -->
+<!-- <p>clima info: {{ infoClima | json }}</p> -->
+<!-- <p>Dinero info: {{ infoDinero | json }}</p> -->
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                <h3 class="text-center">Información de la ciudad</h3>
+                <p>Nombre: {{ infoCiudad.nombre }}</p>
+                <p>País: {{ infoCiudad.pais.nombre }}</p>
+                <p>Latitud: {{ infoClima.coord.lat }}</p>
+                <p>Longitud: {{ infoClima.coord.lon }}</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                <h3 class="text-center">Información del clima</h3>
+                <p>Clima: {{ infoClima.weather[0].main }}</p>
+                <p>Descripcion clima: {{ infoClima.weather[0].description }}</p>
+                <p>Temperatura: {{ infoClima.main.temp }} Centigrados</p>
+                <p>Temperatura mínima: {{ infoClima.main.temp_min }}</p>
+                <p>Temperatura máxima: {{ infoClima.main.temp_max }}</p>
+                <p>Presión: {{ infoClima.main.pressure }}</p>
+                <p>Humedad: {{ infoClima.main.humidity }}</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                <h3 class="text-center">Información del presupuesto</h3>
+                <p>Nombre moneda local: {{ simbolosMoneda[infoCiudad.pais.codigo_moneda].nombre }}</p>
+                <p>Simbolo moneda local: {{ simbolosMoneda[infoCiudad.pais.codigo_moneda].simbolo }}</p>
+                <p>Presupuesto original: {{ dinero }} COP</p>
+                <p>Presupuesto convertido: {{ dineroConvertido }} {{ infoCiudad.pais.codigo_moneda }}</p>
+                <p>Tasa de cambio aplicada: {{ tasaCambio }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button routerLink="/pais-ciudad">Volver al inicio</button>

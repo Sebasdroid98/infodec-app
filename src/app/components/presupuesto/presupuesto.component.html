@@ -1,0 +1,12 @@
+<!-- <p>presupuesto works!</p> -->
+<!-- <p>Ciudad: {{ciudad}}</p> -->
+
+<div class="form-group">
+    <label for="presupuesto">Presupuesto</label>
+    <input type="number" name="presupuesto" id="presupuesto" [(ngModel)]="dinero" required>
+</div>
+
+<!-- <p>Dinero: {{ dinero }}</p> -->
+
+<button routerLink="/pais-ciudad">Atras</button>
+<button routerLink="/info-viaje/{{ciudad}}/{{dinero}}">Siguiente</button>

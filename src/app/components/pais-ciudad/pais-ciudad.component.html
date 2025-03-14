@@ -1,0 +1,46 @@
+<h3 class="text-center">Control de presupuesto</h3>
+
+<!-- <form> -->
+    <div class="form-floating mb-3">
+        <select class="form-select" id="pais" aria-label="Floating label select example" (change)="cargarCiudades($event)" required>
+            <option selected>Selecciona</option>
+            <ng-container *ngFor="let pais of paises">
+                <option [value]="pais.id">{{pais.nombre}}</option>
+            </ng-container>
+        </select>
+        <label for="pais">Pais</label>
+    </div>
+
+    <ng-container *ngIf="ciudades.length > 0; else ciudadesVacias">
+        <div class="card">
+            <div class="card-head">
+                <h4 class="text-center">Ciudades dísponibles</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <ng-container *ngFor="let ciudad of ciudades">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 p-1" (click)="seleccionarCiudad(ciudad.id)">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p class="mb-1"><i class="ri-road-map-line"></i></p>
+                                    <p class="h4">{{ciudad.nombre}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #ciudadesVacias>
+        <p class="text-center">Selecciona un pais para ver sus ciudades en este espacio</p>
+    </ng-template>
+    <!-- <button type="submit" routerLink="/presupuesto/{{ciudadId}}">Siguiente</button> -->
+<!-- </form> -->
+
+<!-- <p>Pais: {{ paisId }}</p> -->
+<!-- <p>Ciudad: {{ ciudadId }}</p> -->
+<!-- <p>Ciudades: {{ ciudades | json }}</p> -->
+
+<button type="button" class="btn btn-outline-primary" routerLink="/presupuesto/{{ciudadId}}">Siguiente</button>

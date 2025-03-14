@@ -1,9 +1,9 @@
 import { Ciudad } from "./ciudad.model";
 
 export interface Historial {
-    id: number;
-    presupuesto_original: string;
-    presupuesto_convertido: string;
+    id?: number;
+    presupuesto_original: number;
+    presupuesto_convertido: number;
     tasa_cambio: string;
     clima: string;
     temperatura: string;

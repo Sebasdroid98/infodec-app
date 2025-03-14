@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Ciudad } from 'src/app/models/ciudad.model';
+import { Historial } from 'src/app/models/historial.model';
 import { ApipropiaService } from 'src/app/services/apipropia.service';
+import * as Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-info-viaje',
@@ -20,6 +22,8 @@ export class InfoViajeComponent {
   infoClima: any = {};
   infoDinero: any = {};
   tasaCambio: number = 0;
+  historial: Historial = { presupuesto_original: 0, presupuesto_convertido: 0, clima: '', temperatura: '', tasa_cambio: '', ciudad_id: 0 };
+  btnGuardarPresupuesto: boolean = false;
 
   // Objeto con los simbolos de las monedas a utilizar
   simbolosMoneda: any = {
@@ -72,6 +76,41 @@ export class InfoViajeComponent {
       this.dineroConvertido = this.dinero * tasaCambio;
       this.tasaCambio = tasaCambio;
     });
+  }
+
+  /**
+   * Función para guardar el presupuesto en la base de datos
+   */
+  guardarPresupuesto() {
+    var datosPresupuesto = {
+      presupuesto_original: this.dinero,
+      presupuesto_convertido: this.dineroConvertido,
+      clima: this.infoClima.weather[0].description,
+      temperatura: (this.infoClima.main.temp).toString(),
+      tasa_cambio: (this.tasaCambio).toString(),
+      ciudad_id: this.infoCiudad.id
+    };
+    this.apiPropiaService.storeHistorial(datosPresupuesto).subscribe((res) => {
+      console.log(res);
+      this.mostrarMensajeCorrecto('Presupuesto guardado con exito!');
+      this.btnGuardarPresupuesto = true;
+    });
+  }
+
+  /**
+   * Función para mostrar un mensaje de éxito al guardar el presupuesto
+   */
+  mostrarMensajeCorrecto(mensaje: string): void {
+    Toastify({
+      text: mensaje,
+      close: true,
+      gravity: "bottom",
+      position: "center",
+      stopOnFocus: true,
+      style: {
+        background: "#189586",
+      },
+    }).showToast();
   }
 
 }

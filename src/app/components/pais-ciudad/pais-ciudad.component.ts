@@ -14,12 +14,9 @@ export class PaisCiudadComponent {
   // inicializamos las variables a utilizar
   paises: Pais[] = [];
   ciudades: Ciudad[] = [];
-
-  // pais = new FormControl('', Validators.required);
   paisId: number = 0;
   ciudadId: number = 0;
-
-  formValido: boolean = true;
+  // formValido: boolean = true;
 
   constructor(
     private apiPropiaService: ApipropiaService
@@ -45,20 +42,18 @@ export class PaisCiudadComponent {
   cargarCiudades(event: Event) {
     const paisId = (event.target as HTMLSelectElement).value;
     this.paisId = parseInt(paisId);
+    this.ciudadId = 0; // Se reinicia la ciudad seleccionada
     this.apiPropiaService.getCiudadesPorPaisId(this.paisId).subscribe((ciudades) => {
       this.ciudades = ciudades;
     });
   }
 
+  /**
+   * Función para seleccionar la ciudad
+   * @param paisId
+   */
   seleccionarCiudad(ciudadId: number) {
     this.ciudadId = ciudadId;
-  }
-
-  /**
-   * Función para validar el formulario de pais y ciudad
-   */
-  procesarFormulario() {
-    console.log(this.paisId, this.ciudadId);
   }
 
 }

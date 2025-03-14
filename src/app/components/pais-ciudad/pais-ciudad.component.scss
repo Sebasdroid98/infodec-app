@@ -1,0 +1,13 @@
+.pointer {
+    cursor: pointer;
+}
+
+.hover:hover {
+    background-color: rgba(0, 0, 0, 0.438);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.438);
+}
+
+.selected {
+    background-color: rgba(0, 0, 0, 0.438);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.438);
+}

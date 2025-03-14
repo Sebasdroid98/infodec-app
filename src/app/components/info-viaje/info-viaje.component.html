@@ -4,36 +4,81 @@
 <!-- <p>clima info: {{ infoClima | json }}</p> -->
 <!-- <p>Dinero info: {{ infoDinero | json }}</p> -->
 
-<div class="card">
+<div class="card mb-3">
     <div class="card-body">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                <h3 class="text-center">Información de la ciudad</h3>
-                <p>Nombre: {{ infoCiudad.nombre }}</p>
-                <p>País: {{ infoCiudad.pais.nombre }}</p>
-                <p>Latitud: {{ infoClima.coord.lat }}</p>
-                <p>Longitud: {{ infoClima.coord.lon }}</p>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <h4 class="text-center">Información de la ciudad</h4>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Nombre:</strong> <i>{{infoCiudad.nombre}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>País:</strong> <i>{{infoCiudad.pais.nombre}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Latitud:</strong> <i>{{infoClima.coord.lat}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Longitud:</strong> <i>{{infoClima.coord.lon}}</i>
+                    </li>
+                </ul>
             </div>
-            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                <h3 class="text-center">Información del clima</h3>
-                <p>Clima: {{ infoClima.weather[0].main }}</p>
-                <p>Descripcion clima: {{ infoClima.weather[0].description }}</p>
-                <p>Temperatura: {{ infoClima.main.temp }} Centigrados</p>
-                <p>Temperatura mínima: {{ infoClima.main.temp_min }}</p>
-                <p>Temperatura máxima: {{ infoClima.main.temp_max }}</p>
-                <p>Presión: {{ infoClima.main.pressure }}</p>
-                <p>Humedad: {{ infoClima.main.humidity }}</p>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <h4 class="text-center">Información del clima</h4>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Clima:</strong> <i>{{infoClima.weather[0].main}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Descripción clima:</strong> <i>{{infoClima.weather[0].description}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Temperatura:</strong> <i>{{ infoClima.main.temp }} C°</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Temperatura mínima:</strong> <i>{{infoClima.main.temp_min}} C°</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Temperatura máxima:</strong> <i>{{infoClima.main.temp_max}} C°</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Presión:</strong> <i>{{infoClima.main.pressure}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Humedad:</strong> <i>{{infoClima.main.humidity}}</i>
+                    </li>
+                </ul>
             </div>
-            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                <h3 class="text-center">Información del presupuesto</h3>
-                <p>Nombre moneda local: {{ simbolosMoneda[infoCiudad.pais.codigo_moneda].nombre }}</p>
-                <p>Simbolo moneda local: {{ simbolosMoneda[infoCiudad.pais.codigo_moneda].simbolo }}</p>
-                <p>Presupuesto original: {{ dinero }} COP</p>
-                <p>Presupuesto convertido: {{ dineroConvertido }} {{ infoCiudad.pais.codigo_moneda }}</p>
-                <p>Tasa de cambio aplicada: {{ tasaCambio }}</p>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                <h4 class="text-center">Información del presupuesto</h4>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Nombre moneda local:</strong> <i>{{simbolosMoneda[infoCiudad.pais.codigo_moneda].nombre}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Simbolo moneda local:</strong> <i
+                            class="h1">{{simbolosMoneda[infoCiudad.pais.codigo_moneda].simbolo}}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Presupuesto original:</strong> <i>{{dinero}} COP</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Presupuesto convertido:</strong> <i>{{dineroConvertido}} {{ infoCiudad.pais.codigo_moneda }}</i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Tasa de cambio aplicada:</strong> <i>{{tasaCambio}}</i>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
-<button routerLink="/pais-ciudad">Volver al inicio</button>
+<div class="d-flex justify-content-around">
+    <button class="btn btn-outline-secondary" routerLink="/pais-ciudad">
+        <i class="ri-corner-up-left-line"></i>&nbsp;Volver al inicio
+    </button>
+    <button class="btn btn-outline-success" (click)="guardarPresupuesto()"
+        [disabled]="btnGuardarPresupuesto">Guardar&nbsp;<i class="ri-save-line"></i></button>
+</div>

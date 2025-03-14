@@ -11,12 +11,19 @@
                     <a class="nav-link" routerLink="/historial-presupuestos">Historial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cambiar idioma a "Alemán"</a>
+                    <a class="nav-link" (click)="cambiarIdioma('de')">Cambiar idioma a "Alemán"</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="cambiarIdioma('es')">Cambiar idioma a "Español"</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<!-- <h1>{{ 'WELCOME' | translate }}</h1>
+<p>{{ 'HELLO' | translate:{name: 'Carlos'} }}</p>
+<button (click)="cambiarIdioma('es')">Español</button>
+<button (click)="cambiarIdioma('en')">English</button> -->
 <div class="container-lg py-5">
     <router-outlet></router-outlet>
 </div>

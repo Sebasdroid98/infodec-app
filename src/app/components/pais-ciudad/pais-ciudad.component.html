@@ -1,49 +1,47 @@
 <h3 class="text-center">Control de presupuesto</h3>
 
-<div class="form-floating mb-3">
-    <select class="form-select" id="pais" aria-label="Floating label select example" (change)="cargarCiudades($event)"
-        required>
-        <option selected>Selecciona</option>
-        <ng-container *ngFor="let pais of paises">
-            <option [value]="pais.id">{{pais.nombre}}</option>
-        </ng-container>
-    </select>
-    <label for="pais">Pais</label>
+<form>
+    <div class="form-floating mb-3">
+        <select class="form-select" [formControl]="paisControl" id="pais" aria-label="Floating label select example" (change)="cargarCiudades($event)" required>
+            <option value="" selected>Selecciona</option>
+            <ng-container *ngFor="let pais of paises">
+                <option [value]="pais.id">{{pais.nombre}}</option>
+            </ng-container>
+        </select>
+        <label for="pais">Pais</label>
+        <small class="text-danger" [hidden]="paisControl.valid || paisControl.pristine">* Este campo es obligatorio.</small>
     </div>
-
-<ng-container *ngIf="ciudades.length > 0; else ciudadesVacias">
-    <div class="card mb-3">
-        <div class="card-head">
-            <h4 class="text-center">Ciudades dísponibles</h4>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <ng-container *ngFor="let ciudad of ciudades">
-                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 p-1 pointer hover" (click)="seleccionarCiudad(ciudad.id)"
-                        [ngClass]="{'selected': ciudad.id === ciudadId}">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <p class="mb-1"><i class="ri-road-map-line"></i></p>
-                                <p class="h4">{{ciudad.nombre}}</p>
+    <ng-container *ngIf="ciudades.length > 0; else ciudadesVacias">
+        <div class="card mb-3">
+            <div class="card-head">
+                <h4 class="text-center">Ciudades dísponibles</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <ng-container *ngFor="let ciudad of ciudades">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 p-1 pointer hover" (click)="seleccionarCiudad(ciudad.id)" [ngClass]="{'selected': ciudad.id === ciudadId}">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p class="mb-1"><i class="ri-road-map-line"></i></p>
+                                    <p class="h4">{{ciudad.nombre}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </ng-container>
-                    </div>
-                    </div>
-                    </div>
-                    </ng-container>
-
-<ng-template #ciudadesVacias>
-    <p class="text-center">Selecciona un pais para ver sus ciudades en este espacio</p>
-</ng-template>
-
-<div class="d-flex justify-content-around">
-    <div>&nbsp;</div>
-    <button type="button" class="btn btn-outline-primary" routerLink="/presupuesto/{{ciudadId}}"
-        [disabled]="ciudadId == 0">
-        Siguiente&nbsp;<i class="ri-arrow-right-fill"></i>
-    </button>
-</div>
-
-<p>ciudad: {{ciudadId}}</p>
+                </div>
+                <div class="alert alert-danger text-center" [hidden]="ciudadId != 0">
+                    Selecciona una ciudad para continuar
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #ciudadesVacias>
+        <p class="text-center">Selecciona un pais para ver sus ciudades en este espacio</p>
+    </ng-template>
+    <div class="d-flex justify-content-around">
+        <div>&nbsp;</div>
+        <button type="button" class="btn btn-outline-primary" routerLink="/presupuesto/{{ciudadId}}" [disabled]="ciudadId == 0">
+            Siguiente&nbsp;<i class="ri-arrow-right-fill"></i>
+        </button>
+    </div>
+</form>

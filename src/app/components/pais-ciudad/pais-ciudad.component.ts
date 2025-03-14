@@ -18,6 +18,8 @@ export class PaisCiudadComponent {
   ciudadId: number = 0;
   // formValido: boolean = true;
 
+  paisControl = new FormControl('', Validators.required);
+
   constructor(
     private apiPropiaService: ApipropiaService
   ) { }

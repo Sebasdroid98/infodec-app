@@ -1,16 +1,16 @@
-<h3 class="text-center">Consultas anteriores</h3>
+<h3 class="text-center">{{ 'TITULO TABLA' | translate}}</h3>
 
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>Pais</th>
-                <th>Ciudad</th>
-                <th>Presupuesto inicial</th>
-                <th>Presupuesto convertido</th>
-                <th>Tasa de cambio</th>
-                <th>Clima</th>
-                <th>Temperatura</th>
+                <th>{{ 'PAIS' | translate}}</th>
+                <th>{{ 'CIUDAD' | translate}}</th>
+                <th>{{ 'PRESUPUESTO INICIAL' | translate}}</th>
+                <th>{{ 'PRESUPUESTO CONVERTIDO' | translate}}</th>
+                <th>{{ 'TASA DE CAMBIO' | translate}}</th>
+                <th>{{ 'CLIMA' | translate}}</th>
+                <th>{{ 'TEMPERATURA' | translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
                 <td>{{consulta.ciudad?.pais?.nombre}}</td>
                 <td>{{consulta.ciudad?.nombre}}</td>
                 <td>$ {{consulta.presupuesto_original}} COP</td>
-                <td> {{consulta.presupuesto_convertido}} {{consulta.ciudad?.pais?.codigo_moneda}}</td>
+                <td>{{consulta.presupuesto_convertido}} {{consulta.ciudad?.pais?.codigo_moneda}}</td>
                 <td>{{consulta.tasa_cambio}}</td>
                 <td>{{consulta.clima}}</td>
                 <td>{{consulta.temperatura}}° Celcius</td>

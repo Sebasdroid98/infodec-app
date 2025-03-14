@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Historial } from 'src/app/models/historial.model';
 import { ApipropiaService } from 'src/app/services/apipropia.service';
 
@@ -21,8 +22,13 @@ export class ConsultasPreviasComponent {
   };
 
   constructor(
-    private apiPropiaService: ApipropiaService
-  ) { }
+    private apiPropiaService: ApipropiaService,
+    private translate: TranslateService
+  ) { 
+    // Obtener idioma de localStorage o establecer español por defecto
+    const idiomaActual = localStorage.getItem('language') || 'es';
+    this.translate.use(idiomaActual)
+  }
 
   ngOnInit(): void {
     this.cargarHistorial();

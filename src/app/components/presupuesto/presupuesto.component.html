@@ -1,16 +1,16 @@
 <h3 class="text-center">Presupuesto inicial</h3>
 
 <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="presupuesto" [(ngModel)]="dinero" required>
-    <label for="presupuesto">Presupuesto</label>
+    <input type="number" class="form-control" id="presupuesto" [formControl]="dineroControl" v>
+    <label for="presupuesto">Presupuesto (COP)</label>
+    <small class="text-danger" [hidden]="dineroControl.valid || dineroControl.pristine" >* Este campo es obligatorio.</small>
 </div>
 
-<!-- <p>Dinero: {{ dinero }}</p> -->
 <div class="d-flex justify-content-around">
     <button class="btn btn-outline-secondary" routerLink="/pais-ciudad">
         <i class="ri-arrow-left-fill"></i>&nbsp;Atrás
     </button>
-    <button class="btn btn-outline-primary" routerLink="/info-viaje/{{ciudad}}/{{dinero}}">
+    <button class="btn btn-outline-primary" (click)="enviarPresupuesto()" [disabled]="dineroControl.invalid">
         Siguiente&nbsp;<i class="ri-arrow-right-fill"></i>
     </button>
 </div>

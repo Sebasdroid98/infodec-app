@@ -57,8 +57,16 @@ export class ApipropiaService {
    * @param datos Historial
    * @returns Observable<Historial>
    */
-  registrarHistorial(datos: Historial): Observable<Historial> {
+  storeHistorial(datos: Historial): Observable<Historial> {
     return this.http.post<Historial>(`${this.API_URL}/historial`, datos);
+  }
+
+  /**
+   * Servicio para obtener el historial de consultas previas
+   * @returns Observable<Historial[]>
+   */
+  getHistorial(): Observable<Historial[]> {
+    return this.http.get<Historial[]>(`${this.API_URL}/historial`);
   }
 
   /**

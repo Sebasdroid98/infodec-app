@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { PaisCiudadComponent } from './components/pais-ciudad/pais-ciudad.component';
 import { PresupuestoComponent } from './components/presupuesto/presupuesto.component';
 import { InfoViajeComponent } from './components/info-viaje/info-viaje.component';
+import { ConsultasPreviasComponent } from './components/consultas-previas/consultas-previas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaisCiudadComponent,
     PresupuestoComponent,
-    InfoViajeComponent
+    InfoViajeComponent,
+    ConsultasPreviasComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,12 @@
     <input type="number" name="presupuesto" id="presupuesto" [(ngModel)]="dinero" required>
 </div>
 
+<div class="form-floating mb-3">
+    <input type="string" class="form-control" id="Presupuesto" placeholder="name@example.com">
+    <label for="Presupuesto">Email address</label>
+</div>
+
 <!-- <p>Dinero: {{ dinero }}</p> -->
 
-<button routerLink="/pais-ciudad">Atras</button>
-<button routerLink="/info-viaje/{{ciudad}}/{{dinero}}">Siguiente</button>
+<button routerLink="/pais-ciudad"><i class="ri-arrow-left-fill"></i>&nbsp;Atrás</button>
+<button routerLink="/info-viaje/{{ciudad}}/{{dinero}}">Siguiente&nbsp;<i class="ri-arrow-right-fill"></i></button>

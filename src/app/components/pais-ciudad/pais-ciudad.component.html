@@ -19,7 +19,7 @@
             <div class="card-body">
                 <div class="row">
                     <ng-container *ngFor="let ciudad of ciudades">
-                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 p-1" (click)="seleccionarCiudad(ciudad.id)">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 p-1 hover" (click)="seleccionarCiudad(ciudad.id)">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p class="mb-1"><i class="ri-road-map-line"></i></p>
@@ -43,4 +43,5 @@
 <!-- <p>Ciudad: {{ ciudadId }}</p> -->
 <!-- <p>Ciudades: {{ ciudades | json }}</p> -->
 
-<button type="button" class="btn btn-outline-primary" routerLink="/presupuesto/{{ciudadId}}">Siguiente</button>
+<button type="button" class="btn btn-outline-primary" routerLink="/presupuesto/{{ciudadId}}">Siguiente&nbsp;<i
+        class="ri-arrow-right-fill"></i></button>

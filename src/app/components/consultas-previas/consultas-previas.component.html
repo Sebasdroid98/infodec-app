@@ -1,0 +1,31 @@
+<h3 class="text-center">Consultas anteriores</h3>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Pais</th>
+                <th>Ciudad</th>
+                <th>Presupuesto inicial</th>
+                <th>Presupuesto convertido</th>
+                <th>Tasa de cambio</th>
+                <th>Clima</th>
+                <th>Temperatura</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let consulta of historial">
+                <td>{{consulta.ciudad?.pais?.nombre}}</td>
+                <td>{{consulta.ciudad?.nombre}}</td>
+                <td>$ {{consulta.presupuesto_original}} COP</td>
+                <td> {{consulta.presupuesto_convertido}} {{consulta.ciudad?.pais?.codigo_moneda}}</td>
+                <td>{{consulta.tasa_cambio}}</td>
+                <td>{{consulta.clima}}</td>
+                <td>{{consulta.temperatura}}° Celcius</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <p>Historial: {{historial | json}}</p> -->
+<button type="button" class="btn btn-outline-primary" routerLink="/"><i class="ri-arrow-left-fill"></i>&nbsp;Volver al inicio</button>

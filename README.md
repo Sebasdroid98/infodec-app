@@ -25,6 +25,31 @@ Proyecto frontend desarrollado de acuerdo a los requerimientos de la prueba téc
 - Conversion de moneda colombiana a la moneda del pais seleccionado.
 - Soporte a los idiomas español y alemán (solo en la vista de historial de consultas).
 
+## Ejecución con Docker
+
+Este proyecto incluye archivos Docker para facilitar la construcción y ejecución del frontend en un contenedor.
+
+- **Versión de Node utilizada:** 22.13.1 (imagen `node:22.13.1-slim`)
+- **Puerto expuesto:** 4200 (Angular dev server)
+- **No se requieren variables de entorno obligatorias** para la ejecución básica.
+
+### Instrucciones rápidas
+
+1. Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
+2. Desde la raíz del proyecto, ejecuta:
+
+   ```bash
+   docker compose up --build
+   ```
+
+3. Accede a la aplicación en tu navegador en [http://localhost:4200](http://localhost:4200)
+
+### Notas específicas
+
+- El contenedor ejecuta el servidor de desarrollo de Angular (`ng serve`). Esto es útil para desarrollo, pero para producción se recomienda servir los archivos estáticos desde un servidor como nginx.
+- Si necesitas personalizar variables de entorno, puedes descomentar la línea `env_file: ./.env` en el archivo `docker-compose.yml` y agregar tus variables en un archivo `.env`.
+- No se detectaron dependencias externas ni servicios adicionales en la configuración actual.
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

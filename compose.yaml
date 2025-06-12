@@ -1,0 +1,19 @@
+services:
+  typescript-app:
+    # Angular frontend service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: typescript-app:latest
+    container_name: typescript-app
+    ports:
+      - "4200:4200"  # Expose Angular dev server
+    restart: unless-stopped
+    init: true
+    # env_file: ./.env  # Uncomment if .env file exists
+    # No external dependencies detected
+    # For production, consider serving /app/dist with nginx instead of ng serve
+
+# No external services (databases, caches, etc.) detected in README or source
+# No volumes section needed as there are no persistent data requirements
+# No networks section needed as there is only one service

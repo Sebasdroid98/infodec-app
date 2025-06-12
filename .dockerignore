@@ -1,0 +1,93 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Angular build and cache directories
+.angular/
+dist/
+build/
+out/
+
+# IDE and editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Environment and secrets
+.env*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+
+# Temporary and local files
+tmp/
+temp/
+*.tmp
+.local/
+local/
+
+# Documentation and markdown
+README*
+*.md
+
+docs/
+
+# Test and debug artifacts
+test/
+tests/
+*.log
+debug/
+
+# Miscellaneous
+*.old
+
+# EditorConfig (optional, usually not needed in container)
+.editorconfig
+
+# Exclude cache and pack files
+*.pack
+
+# Exclude Babel and Webpack caches
+*.json
+
+# Exclude git keep files
+*.gitkeep
+
+# Exclude all files in .angular/cache
+.angular/cache/
+
+# Exclude all files in assets/i18n except for production assets
+# (If you want to keep i18n files, comment out the next line)
+# src/assets/i18n/
+
+# Exclude any other hidden files or folders
+.*
+
+# Allow package.json and package-lock.json (do NOT ignore these)
+!package.json
+!package-lock.json
+
+# Allow tsconfig files
+!tsconfig.json
+!tsconfig.app.json
+!tsconfig.spec.json
+
+# Allow angular.json
+!angular.json
+
+# Allow source files
+!src/
+
+# End of .dockerignore
